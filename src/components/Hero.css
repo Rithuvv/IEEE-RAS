@@ -1,0 +1,220 @@
+.hero {
+  position: relative;
+  padding-top: clamp(7.5rem, 14vw, 10rem);
+  padding-bottom: 3rem;
+  overflow: hidden;
+}
+
+.hero__glow {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 640px;
+  height: 640px;
+  background: radial-gradient(circle, var(--crimson-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+  border: 1px solid var(--cyan-dim);
+  background: rgba(34, 226, 242, 0.05);
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  margin-bottom: 1.6rem;
+}
+
+.hero__status svg {
+  animation: pulse-fade 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-fade {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.hero__title {
+  font-size: clamp(2.35rem, 6.2vw, 4rem);
+  color: var(--text);
+  max-width: 14ch;
+}
+
+.hero__sub {
+  margin-top: 1.4rem;
+  font-size: 1.05rem;
+  max-width: 52ch;
+  color: var(--text-muted);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.3rem;
+}
+
+.hero__art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.schematic {
+  width: min(420px, 82vw);
+  height: auto;
+}
+
+.schematic__ring {
+  stroke: var(--line);
+  stroke-width: 1;
+  fill: none;
+}
+
+.schematic__ring--outer {
+  stroke-dasharray: 2 8;
+  animation: spin-slow 60s linear infinite;
+  transform-origin: 260px 260px;
+}
+
+.schematic__ring--mid {
+  stroke: var(--line-strong);
+  stroke-dasharray: 1 6;
+  animation: spin-slow-rev 44s linear infinite;
+  transform-origin: 260px 260px;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-slow-rev {
+  to { transform: rotate(-360deg); }
+}
+
+.schematic__orbit {
+  animation: spin-slow 30s linear infinite;
+  transform-origin: 260px 260px;
+}
+
+.schematic__node {
+  fill: var(--text-faint);
+}
+
+.schematic__node--cyan {
+  fill: var(--cyan);
+  filter: drop-shadow(0 0 4px var(--cyan-glow));
+}
+
+.schematic__stroke {
+  stroke: var(--text-faint);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.schematic__stroke--thick {
+  stroke: rgba(238, 241, 246, 0.55);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.schematic__joint {
+  fill: var(--panel-raised);
+  stroke: var(--crimson);
+  stroke-width: 2;
+}
+
+.schematic__joint--cyan {
+  stroke: var(--cyan);
+  filter: drop-shadow(0 0 6px var(--cyan-glow));
+}
+
+.schematic__arm-upper {
+  animation: arm-sway 6s ease-in-out infinite;
+  transform-origin: 260px 300px;
+}
+
+.schematic__arm-fore {
+  animation: arm-sway-2 6s ease-in-out infinite;
+  transform-origin: 345px 235px;
+}
+
+@keyframes arm-sway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-4deg); }
+}
+@keyframes arm-sway-2 {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(6deg); }
+}
+
+.schematic__scan {
+  stroke: var(--crimson);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 4 6;
+  opacity: 0.7;
+  animation: dash-move 3s linear infinite;
+}
+
+@keyframes dash-move {
+  to { stroke-dashoffset: -40; }
+}
+
+.schematic__label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--text-faint);
+  letter-spacing: 0.05em;
+}
+
+.hero__baseline {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  border-top: 1px solid var(--line);
+  padding-block: 1.1rem;
+}
+
+.hero__baseline-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.4rem 2.2rem;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.09em;
+  color: var(--text-faint);
+}
+
+@media (min-width: 900px) {
+  .hero__inner {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2rem;
+  }
+  .hero__baseline-inner {
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .schematic__ring--outer,
+  .schematic__ring--mid,
+  .schematic__orbit,
+  .schematic__arm-upper,
+  .schematic__arm-fore,
+  .schematic__scan,
+  .hero__status svg {
+    animation: none;
+  }
+}

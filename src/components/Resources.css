@@ -1,0 +1,111 @@
+.resources__controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 1.8rem;
+}
+
+.resources__search {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-s);
+  padding: 0.75rem 1rem;
+  color: var(--text-faint);
+  max-width: 420px;
+  transition: border-color 0.2s ease;
+}
+
+.resources__search:focus-within {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+.resources__search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+.resources__search input::placeholder {
+  color: var(--text-faint);
+}
+
+.resources__cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.resources__empty {
+  padding: 2rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.resources__list {
+  border-top: 1px solid var(--line);
+}
+
+.resource-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  transition: background 0.18s ease, padding-inline 0.18s ease;
+}
+
+.resource-row:hover {
+  background: var(--panel);
+  padding-inline: 0.9rem;
+}
+
+.resource-row__cat {
+  white-space: nowrap;
+}
+
+.resource-row__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.resource-row__title {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.resource-row__desc {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.resource-row__arrow {
+  color: var(--text-faint);
+  transition: color 0.18s ease, transform 0.18s ease;
+}
+
+.resource-row:hover .resource-row__arrow {
+  color: var(--cyan);
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 560px) {
+  .resource-row {
+    grid-template-columns: 1fr auto;
+  }
+  .resource-row__cat {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
+}

@@ -1,0 +1,70 @@
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.1rem;
+}
+
+.project-tile {
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--panel), var(--panel-raised));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 1.8rem;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.project-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0px,
+      transparent 26px,
+      var(--line) 26px,
+      var(--line) 27px
+    );
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.project-tile:hover {
+  transform: translateY(-4px);
+  border-color: var(--crimson-dim);
+}
+
+.project-tile:hover .project-tile__glyph {
+  color: var(--crimson);
+  box-shadow: 0 0 22px var(--crimson-glow);
+}
+
+.project-tile__glyph {
+  position: relative;
+  z-index: 1;
+  width: 52px;
+  height: 52px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--line-strong);
+  color: var(--cyan);
+  margin-bottom: 1.3rem;
+  transition: box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.project-tile h3 {
+  position: relative;
+  z-index: 1;
+  font-size: 1.08rem;
+  margin-bottom: 0.6rem;
+}
+
+.project-tile p {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+}
